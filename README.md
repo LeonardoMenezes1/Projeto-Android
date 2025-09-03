@@ -1,6 +1,6 @@
 ** Acesse o site aqui **
 
-![qr code do site](imagens/frame.png)
+<img src="imagens/frame.png" alt="QR Code do Site" width="200"/>
 
 ou clique no link abaixo:
 

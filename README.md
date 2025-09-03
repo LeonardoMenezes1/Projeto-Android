@@ -4,4 +4,4 @@
 
 ou clique no link abaixo:
 
-https://leonardomenezes1.github.io/projeto-android/
+<a href="https://leonardomenezes1.github.io/projeto-android/" target="_blank">Clique aqui para visitar o site</a>

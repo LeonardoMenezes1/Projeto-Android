@@ -1,14 +1,11 @@
-@charset "UTF-8";/*regra importante para compatibilidade com todos os caracteres em diferentes linguas q nem no html*/
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap'); /*importação de font do google font, e configuração pra como vamos usar essa fonte no site*/
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @font-face{
     font-family: 'Android';
     src: url('fontes/idroid.otf') format('opentype');
     font-weight: normal;
 }
 
-/*Para colocar as cores mais rápido no seu site coloque os códigos das paletas aqui entre os comentários para deixar anotado, mas existe uma pseudo-classe chamada :root{} ela é tipo a raiz da arvore do nosso documento, tudo que eu colocar nela vai servir para o documento inteiro, então basicamente pode-se criar variaveis dentro dela, todas as variaveis em css tem que começar com 2 traços -- e o nome que você quiser colocar na variavel, exemplo = --cor0: código da paleta de cor, inclusive você pode colocar várias variaveis uma dps da outra com nomes das variaveis diferentes, (sem espaços nos nomes das variaveis) como foi feito abaixo; , ao mudar uma cor aqui na root vai mudar també onde essa cor foi colocada, e pra colocar essas cores é facil, logo apos de colocar aqui na root, quando for botar uma cor vai ate o fim da lista que la estarão as cores*/
-
-/*configuração global*/
 :root{
     --cor0:#ebd871;
     --cor1:#83e1ad;
@@ -21,12 +18,11 @@
     --fonte-destaque: 'Bebas Neue', 'cursive';
     --fonte-android:'Android' , 'cursive';
 }
-/*configuração global*/
+
 *{
     margin: 0px;
     padding: 0px;
 }
-
 
 body{
     background-color: var(--cor0);
@@ -34,41 +30,43 @@ body{
 }
 
 a.externo::after {
-    content: '\00A0\1F517';/*o codigo 1F517 é um simbolo usado para demonstrar que se trata de links externos do site, o 00A0 é um espaço sem quebra antes do simbolo. Esse after aqui é um pseudo elemento que faz com que tudo q for colocado aqui apareça dps dos links*/
+    content: '\00A0\1F517';
 }
 
 header {
-    /*quer dizer que vai da cor 3 até a cor 5 e como o nav ja tem a cor 5 configurada nele elas se juntam obviamente, pq o nav esta abaixo e como aqui configuramos de ir de cima para baixo as cores iguais irao se encontrar e (aparentemente) virar uma só*/
     background-image: linear-gradient(to bottom, var(--cor3), var(--cor5));
-    min-height: 150px; /*independente do tamanho da tela do usuario, o container onde esse min-height estiver nunca tera menos que 150px, e mesmo se o conteudo dentro dele precisar de mais espaço ele pode espadir para acomodar(caso nao tenha nenhuma configuração que impeça) mas nunca diminuir de tamanho.*/
+    min-height: 150px;
     text-align: center;
     padding: 40px;
-
 }
+
 header > h1{
     color: white;
     font-family: var(--fonte-destaque);
     font-size: 3em;
     font-weight: normal;
-    margin-bottom: 20px;/*pra dar uma afastada do titulo pro paragrafo que tem no header*/
+    margin-bottom: 20px;
     text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.267);
 }
+
 header > p {
     font-family: var(--fonte-padrao);
     font-size: 1.2em;
     color: white;
-    max-width: 600px;/*com isso ele automaticamente virou um bloco ent preciso deixar margin auto, para ficar centralizado. Esse max-width quer dizer que independente do tamanho da tela o maximo que a largura desse paragrafo vai chegar é 600px , nunca mais do que isso*/
-    padding-right: 10px;/*esse padding é bom especialmente quando for em telas diferentes ele da um espaço pro texto nao ficar colado na borda da página*/
+    max-width: 600px;
+    padding-right: 10px;
     padding-left: 10px;
-    margin: auto;/*para centralizar o conteudo, isso pq utilizamos o max-width, use sempre quando quiser centralizar um bloco dentro de um elemento pai */
+    margin: auto;
     margin-bottom: 30px;
     text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.267);
 }
+
 nav {
-    background-color: var(--cor5);/*parece uma coisa so o background do nav com o header mas nao é, apenas deixe o background deles com a mesma cor*/
+    background-color: var(--cor5);
     padding: 10px;
-    box-shadow: 0px 7px 7px rgba(0, 0, 0, 0.363);/*essa sombra vai ficar abaixo do cabeçalho*/
+    box-shadow: 0px 7px 7px rgba(0, 0, 0, 0.363);
 }
+
 nav > a {
     color:var(--cor1);
     padding: 10px;
@@ -85,13 +83,14 @@ main{
     min-width:300px;
     max-width: 1000px;
     margin: auto;
-    margin-bottom: 30px;/*pra separar o main do footer*/
-    padding: 20px;/*pro conteudo nao ficar colado na borda*/
+    margin-bottom: 30px;
+    padding: 20px;
     background-color: white; 
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.418);
-    border-bottom-left-radius: 10px;/*so para as bordas la de baixo ficarem arredondadas*/
+    border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 }
+
 main h1 {
     color:var(--cor5);
     font-family: var(--fonte-android);
@@ -107,17 +106,20 @@ main h2 {
     background-image: linear-gradient(to right, var(--cor1), transparent);
     text-indent: 8px;
 }
+
 main p {
-    margin: 15px 0px; /*por causa das variaveis globais do css, precisamos definir a margin e o padding dos paragrafos tbm*/
-    text-align: justify;/*aqui se colocarmos isso so para tag 'p' em geral ele ia deixar justificado o paragrafo do header junto, entao ao inves de 'p' colocamos 'main p' e nao coloque o '>' entre eles pq dentro do main ainda tem um article ou div, ent se colocar > vai ser so para paragrafos dentro do main e fora dos article e divs q tem dentro do main*/
-    text-indent: 30px;/*a primeira linha de cada paragrafo aqui ficaram com um espaço de identação*/
-    line-height: 2em;/*altura das linhas do paragrafo, isso serve pra quando vc sentir que as linhas estao muito juntas*/
+    margin: 15px 0px;
+    text-align: justify;
+    text-indent: 30px;
+    line-height: 2em;
     font-size: 1em;
  }
+
  main strong{
     color: var(--cor4);
-    font-weight: bold;/*pra tudo que estiver em strong dentro de main*/
+    font-weight: bold;
  }
+
  main a{
     text-decoration: none;
     font-weight: bold;
@@ -125,58 +127,59 @@ main p {
     background-color: var(--cor1);
     padding: 2px 6px;
  }
+
  main a:hover{
     text-decoration: underline;
     color: var(--cor4);
  }
 
-main img {/*largura das img independente do conteudo, elas ocupam 100% do seu elemento pai independente do tamanho da tela*/
+main img {
     width: 100%;
 }
+
 main img.pequena{
-    max-width: 350px;/*a imagem com essa classe fica com uma resolução legal, isso pq eu sei q essa imagem tem 400 de largura, nao importa o tamanho da tela a imagem sempre vai ficar com 350px, 'grandinha'. Se eu colocarn width: 50% a imagem vai ficar 'pequena' em telas menores ao que foi definido em max-width, pois sempre sera 50% do seu elemento pai.*/
-    display: block;/*Mesmo que o conteúdo dele seja pequeno, um elemento block vai se estender para preencher 100% da largura do seu container pai. Além desses dois, existe o display: inline-block, que combina características de ambos. Ele permite que o elemento fique na mesma linha que outros (como inline), mas também permite que você defina width, height e margens verticais (como block). É uma opção muito versátil para criar, por exemplo, caixas ou botões que ficam lado a lado mas têm dimensões controladas.*/
-    margin: auto;/*para centralizar a imagem no elemento*/
+    max-width: 350px;
+    display: block;
+    margin: auto;
 }
 
-div.video {/*aqui precisamos fazer uma 'gambiarra', como o iframe do youtube ja te da uma configuração de largura e altura tu precisa envelopar esse iframe em uma div para poder fazer modificações nesse video*/
-    background-color: var(--cor5);/*Define a cor de fundo do seu container de vídeo. Se o iframe não preencher totalmente o container (o que pode acontecer dependendo das proporções), essa cor será visível atrás ou ao redor do vídeo*/
-    margin: 0px -20px 30px -20px;/*como foi feito no titulo do aside essa margin negativa serve para prencher o espaço vazio entre o conteudo e seu elemento pai, como a div ocupa 100% do seu espaço por ser display blok essa margin vai ocupar de um lado ao outro no main onde ela esta*/
-    padding: 20px;/* Esse preenchimento cria um espaço entre a borda do container e o iframe do vídeo em si.*/
-    padding-bottom: 58%;/*Esta é a chave da responsividade do vídeo e a "gambiarra" principal! O padding-bottom (ou padding-top) percentual é calculado com base na largura do elemento pai. Ao definir padding-bottom: 58%;, você está basicamente dizendo: "faça a altura deste container ser 58% da sua própria largura".
-    Por que 58%? Isso geralmente corresponde à proporção de aspecto 16:9 (altura / largura = 9 / 16 = 0.5625 ou 56.25%). Você arredondou para 58%, o que é comum para dar uma pequena margem ou garantir que o vídeo preencha bem. Essa técnica força o container a ter uma proporção fixa, o que é crucial para evitar que o vídeo "corte" ou "esticar" quando a largura da tela muda. Como a largura da div.video é fluida (se ajusta ao pai), a altura também se ajusta proporcionalmente. os videos ja vem com uma proporção tipo 16:9 para eu manter essa proporção eu divido o 2 numero pelo primeiro e o resultado eu coloco em padding-bottom ou padding-top. padding percentual (especialmente padding-bottom/top) adiciona espaço dentro do elemento e é usado para controlar a proporção de aspecto, porque ele aumenta a altura do container com base na sua largura. Margin percentual adiciona espaço fora do elemento e é usado para espaçar elementos entre si. Ele não afeta a altura interna do elemento da mesma forma que o padding.*/
-    position: relative;/*Define o posicionamento do container como "relativo". Isso é fundamental para o CSS do iframe aninhado. Quando um elemento pai tem position: relative, seus elementos filhos com position: absolute podem ser posicionados em relação a esse pai, e não em relação à janela do navegador (viewport). Sem position: relative aqui, seu iframe se posicionaria em relação ao body ou ao elemento posicionado mais próximo, o que provavelmente não é o que você quer.*/
-
-    /*Cria um Espaço de Proporção Fixa: O padding-bottom percentual (que se baseia na largura do elemento) cria um "buraco" no seu layout que tem a mesma proporção do vídeo. Position: relative e position: absolute: Você então posiciona o iframe do vídeo absolutamente dentro desse "buraco". Como o iframe é posicionado em relação ao seu container pai (div.video) que tem position: relative, ele se expande para preencher o espaço proporcional que você criou.*/
+div.video {
+    background-color: var(--cor5);
+    margin: 0px -20px 30px -20px;
+    padding: 20px;
+    padding-bottom: 58%;
+    position: relative;
 }
-div.video > iframe { /*o sinal > significa que esta falando especificamente de tal elemento dentro de um container*/
+
+div.video > iframe { 
     position: absolute;
-    top: 5%;/*aqui vc define a margin do iframe com base no seu elemento pai div.video que a proporção ja foi definida em 58%*/
-    left: 5%;/*top: 5% e left: 5%: Isso significa que o iframe terá um "afastamento" de 5% da borda superior e 5% da borda esquerda da div.video. Pense nisso como uma margem interna que você está criando para o iframe dentro da div.video.*/
-    width: 90%;/*width: 90% e height: 90%: Como o iframe já tem 5% de left e 5% de top, para que ele preencha o restante do espaço de forma centralizada (visualmente), ele precisa ocupar 90% da largura e 90% da altura do pai. Largura: 5% (esquerda) + 90% (largura do iframe) + 5% (espaço restante à direita) = 100% da largura do pai.Altura: 5% (topo) + 90% (altura do iframe) + 5% (espaço restante abaixo) = 100% da altura do pai.*/
-    height: 90%;/*Essa combinação cria um "efeito de borda" ou "moldura" de 5% ao redor do vídeo, onde a cor de fundo da div.video (var cor5) pode ser vista. E o mais importante, todo esse cálculo de 5% e 90% é feito com base nas dimensões responsivas da div.video, que por sua vez se adapta à largura da tela e mantém a proporção de 16:9 (graças ao padding-bottom: 58%). Então, sim, você está usando o top e left para definir o "início" do iframe e o width e height para definir seu "tamanho", tudo isso relativo ao espaço que a div.video já estabeleceu para si mesma.*/
+    top: 5%;
+    left: 5%;
+    width: 90%;
+    height: 90%;
 }
 
 aside{
     background-color:var(--cor1);
     padding: 10px;
-    border-radius: 10px;/*por causa da margin negativa no h3 desse aside ele perdeu o border radius de cima ent para colocarmos podemos adicionar um border radius direto no h3*/
+    border-radius: 10px;
 }
 
 aside > h3{
     background-color: var(--cor4);
     color: white;
     padding: 10px;
-    margin: -10px -10px 0px -10px;/*Quando você usa uma margem positiva (por exemplo, margin-top: 20px;), você está adicionando espaço entre o elemento e os elementos vizinhos. É como empurrar o elemento para longe dos outros. Já a margem negativa (por exemplo, margin-top: -20px;) faz o oposto: ela puxa o elemento para mais perto dos seus vizinhos, podendo até sobrepô-los. É como se você estivesse "roubando" espaço dos elementos ao redor. Vc pode usar isso para preencher certos espaços que ficaram em branco no seu documento.*/
-    border-radius: 10px 10px 0px 0px;/*em cima, esquerda e direita, em baixo deixamos normal*/
+    margin: -10px -10px 0px -10px;
+    border-radius: 10px 10px 0px 0px;
     box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.281);
 }
 
-aside > ul{/*se nao configurar o ul as bolinhas vao ficar pra fora do conteudo*/
-    list-style-type: '\2714\00A0\00A0'; /*simbolo de 'correto' da emojipedia, colocando esse código e contrabarra antes ja vai, porem nao é com todos os navegadores que funciona, esses 00A0 sao apenas espaços sem quebra, da pra colocar esses espaços antes do codigo tbm*/
-    list-style-position: inside;/*posição da lista, como queremos colocar as bolinhas dentro do conteudo é inside pra fora seria outside*/
-    columns: 2;/*deixa a ul em coluna mas antes de deixar em varias colunas olhe bem pra ver se nao vai vazar do container pai*/
+aside > ul{
+    list-style-type: '\2714\00A0\00A0';
+    list-style-position: inside;
+    columns: 2;
 }
+
 footer{
     background-color: var(--cor5);
     color: white;
@@ -194,3 +197,24 @@ footer a {
     text-decoration: underline;
     color: var(--cor1);
  }
+
+ .animate-charcter {
+            text-transform: uppercase;
+            background-image: linear-gradient(-225deg, #231557 0%, #44107a 29%, #ff1361 67%, #fff800 100%);
+            background-size: auto auto;
+            background-clip: border-box;
+            background-size: 200% auto;
+            color:#fff;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: textclip 2s linear infinite;
+            display: inline-block;
+            font-size: 15px;
+        }
+
+        @keyframes textclip {
+            to {
+                background-position: 200% center;
+            }
+        }
